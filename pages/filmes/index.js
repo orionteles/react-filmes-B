@@ -1,17 +1,10 @@
 import Pagina from '@/components/Pagina'
 import apiFilmes from '@/services/apiFilmes'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Row } from 'react-bootstrap'
 
-const index = () => {
-
-    const [filmes, setFilmes] = useState([])
-
-    useEffect(() => {
-        apiFilmes.get('/movie/popular').then(resultado => {
-            setFilmes(resultado.data.results)
-        })
-    }, [])
+const index = ({filmes}) => {
 
     return (
         <Pagina titulo="Filmes">
@@ -25,7 +18,7 @@ const index = () => {
                                 <Card.Title>{item.title}</Card.Title>
                                 <p>Lançamento: {item.release_date}</p>
                                 <p>Nota: {item.vote_average}</p>
-                                <Button variant="danger">Detalhes</Button>
+                                <Link href={'/filmes/' + item.id} className='btn btn-danger'>Detalhes</Link>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -37,3 +30,13 @@ const index = () => {
 }
 
 export default index
+
+export async function getServerSideProps(context) {
+
+    const resultado = await apiFilmes.get('/movie/popular')
+    const filmes = resultado.data.results
+
+    return {
+        props: {filmes}, // will be passed to the page component as props
+    }
+}
