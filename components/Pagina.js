@@ -14,7 +14,7 @@ const Pagina = (props) => {
         </Container>
       </div>
 
-      <Container>
+      <Container className='mb-5 pb-4'>
         {props.children}
       </Container>
 
