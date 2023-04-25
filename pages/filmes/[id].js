@@ -1,5 +1,6 @@
 import Pagina from '@/components/Pagina'
 import apiFilmes from '@/services/apiFilmes'
+import Link from 'next/link'
 import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 
@@ -30,8 +31,10 @@ const Detalhes = ({ filme, atores }) => {
             <h2>Atores</h2>
             <Row>
                 {atores.map(item => (
-                    <Col md={2}>
-                        <Card.Img variant="top" src={'https://image.tmdb.org/t/p/w500/' + item.profile_path} />
+                    <Col className='mb-3' title={item.name + ' - ' + item.character} md={2}>
+                        <Link href={'/atores/' + item.id}>
+                            <Card.Img variant="top" src={'https://image.tmdb.org/t/p/w500/' + item.profile_path} />
+                        </Link>
                     </Col>
                 ))}
             </Row>

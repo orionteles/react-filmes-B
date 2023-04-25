@@ -7,7 +7,7 @@ import { Button, Card, Col, Row } from 'react-bootstrap'
 const index = ({filmes}) => {
 
     return (
-        <Pagina titulo="Filmes">
+        <Pagina titulo="Filmes Populares">
 
             <Row md={4}>
                 {filmes.map(item => (
