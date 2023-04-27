@@ -1,3 +1,4 @@
+import Fotos from '@/components/Fotos'
 import Pagina from '@/components/Pagina'
 import apiFilmes from '@/services/apiFilmes'
 import Link from 'next/link'
@@ -20,37 +21,9 @@ const Detalhes = ({ ator, imagens, filmes, series }) => {
                 </Col>
             </Row>
 
-            <h2 className='mt-3'>Imagens</h2>
-            <Row>
-                {imagens.map(item => (
-                    <Col className='mb-3' md={2}>
-                        <Card.Img variant="top" src={'https://image.tmdb.org/t/p/w500/' + item.file_path} />
-                    </Col>
-                ))}
-            </Row>
-
-            <h2 className='mt-3'>Filmes</h2>
-            <Row>
-                {filmes.map(item => (
-                    <Col className='mb-3' md={2}>
-                        <Link href={'/filmes/' + item.id}>
-                            <Card.Img variant="top" src={'https://image.tmdb.org/t/p/w500/' + item.poster_path} />
-                        </Link>
-                    </Col>
-                ))}
-            </Row>
-
-            <h2 className='mt-3'>Séries</h2>
-            <Row>
-                {series.map(item => (
-                    <Col className='mb-3' md={2}>
-                        <Link href={'/filmes/' + item.id}>
-                            <Card.Img variant="top" src={'https://image.tmdb.org/t/p/w500/' + item.poster_path} />
-                        </Link>
-                    </Col>
-                ))}
-            </Row>
-
+            <Fotos titulo="Imagens" lista={imagens} foto="file_path" />
+            <Fotos titulo="Filmes" lista={filmes} foto="poster_path" link="/filmes/" />
+            <Fotos titulo="Séries" lista={series} foto="poster_path" link="/series/" />
 
         </Pagina>
     )

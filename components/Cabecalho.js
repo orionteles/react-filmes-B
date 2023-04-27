@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
 const Cabecalho = () => {
     return (
@@ -8,9 +8,20 @@ const Cabecalho = () => {
                 <Container>
                     <Navbar.Brand href="#home">Navbar</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <NavDropdown title="Filmes" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/filmes">Populares</NavDropdown.Item>
+                            <NavDropdown.Item href="/filmes/lancamentos">Lançamentos</NavDropdown.Item>
+                            <NavDropdown.Item href="/filmes/cartaz">Em cartaz</NavDropdown.Item>
+                            <NavDropdown.Item href="/filmes/top">Top Rated</NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown title="Séries" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/series">Populares</NavDropdown.Item>
+                            <NavDropdown.Item href="/series/ar">No Ar</NavDropdown.Item>
+                            <NavDropdown.Item href="/series/estreias">Estreias</NavDropdown.Item>
+                            <NavDropdown.Item href="/series/top">Top Rated</NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link href="/atores">Atores</Nav.Link>
+                        <Nav.Link href="/generos">Gêneros</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
